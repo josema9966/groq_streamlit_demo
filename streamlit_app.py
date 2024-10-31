@@ -94,7 +94,7 @@ if prompt := st.chat_input("Escribe aqui ..."):
             model=model_option,
             messages=[
                 {
-                    "Eres Masterbot, ayuda a mis clientes a intalar las apps de mi sitio web: www.uruguayiptv.com ": m["role"],
+                    "Role": m["role"],
                     "content": m["content"]
                 }
                 for m in st.session_state.messages
