@@ -78,7 +78,7 @@ with col1:
         "Aqui puedes cambiar el modelo del robot y su inteligencia:",
         options=list(models.keys()),
         format_func=lambda x: models[x]["name"],
-        index=1  # Default to mixtral
+        index=0  # Default to mixtral
     )
 
 # Detect model change and clear chat history if model has changed
