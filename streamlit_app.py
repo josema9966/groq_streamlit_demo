@@ -3,7 +3,7 @@ from typing import Generator
 from groq import Groq
 
 st.set_page_config(page_icon="💬", layout="wide",
-                   page_title="Groq Goes Brrrrrrrr...")
+                   page_title="MasterBot")
 
 
 def icon(emoji: str):
@@ -16,7 +16,7 @@ def icon(emoji: str):
 
 icon("🏎️")
 
-st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
+st.subheader("Hola, en que te puedo ayudar escribe tu pregunta:", divider="rainbow", anchor=False)
 
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
@@ -43,10 +43,10 @@ col1, col2 = st.columns(2)
 
 with col1:
     model_option = st.selectbox(
-        "Choose a model:",
+        "Aqui puedes cambiar el modelo del robot y su inteligencia:",
         options=list(models.keys()),
         format_func=lambda x: models[x]["name"],
-        index=4  # Default to mixtral
+        index=1  # Default to mixtral
     )
 
 # Detect model change and clear chat history if model has changed
@@ -82,7 +82,7 @@ def generate_chat_responses(chat_completion) -> Generator[str, None, None]:
             yield chunk.choices[0].delta.content
 
 
-if prompt := st.chat_input("Enter your prompt here..."):
+if prompt := st.chat_input("Escribe aqui ..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
 
     with st.chat_message("user", avatar='👨‍💻'):
